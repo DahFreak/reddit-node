@@ -1,5 +1,7 @@
 const http = require('http');
 const fetch = require('node-fetch')
+const db = require('./Database')
+
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -13,7 +15,18 @@ const server = http.createServer((req, res) => {
 
 server.listen(port, hostname, () => {
     console.log("Server is running at http://" + hostname + ":" + port);
-    setInterval(print, 3000)
+    // setInterval(print, 3000)
+    //db.GetPosts();
+
+    let post = {
+        sub: "script",
+        title: "scriptTitle",
+        selfText: "scriptSelf",
+        username: "scriptUsername",
+        created: "2019-10-10"
+    }
+
+    db.InsertPost(post);
 })
 
 function print()
